@@ -4,6 +4,7 @@ const searchBox = document.getElementById('search-input');
 let countryArray = [];
 let ul = document.querySelector('#country-list');
 
+// Click listener for search box
 searchBox.addEventListener('keyup', async (e) => {
 
     const searchTerm = e.target.value;
@@ -33,6 +34,7 @@ searchBox.addEventListener('keyup', async (e) => {
     };
 });
 
+// Get data from api and sort it
 const getCountries = async () => {
     try {
         const res = await axios.get('https://restcountries.com/v3.1/all');
@@ -51,9 +53,9 @@ const getCountries = async () => {
     }
 }
 
+// To make new List elements and add the data from api and add these list elements to the body
 const makeLI = async () => {
     const countryNames = await getCountries();
-    window.demoName = countryNames;
     for (country of countryNames) {
         const newLI = document.createElement("li");
         newLI.textContent = country.toUpperCase();
@@ -61,6 +63,7 @@ const makeLI = async () => {
     }
 }
 
+// Click listener for list elements
 const addClickListener = async () => {
     await makeLI();
     const lis = countryList.getElementsByTagName('li');

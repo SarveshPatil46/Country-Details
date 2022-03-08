@@ -2,6 +2,7 @@ const countryName = localStorage.getItem('country')
 const container = document.querySelector('#country-details')
 const spans = container.getElementsByTagName('span')
 
+// To get data of individual country from api and create flag img and header
 const getData = async () => {
     try {
         const res = await axios.get('https://restcountries.com/v3.1/name/' + countryName);
@@ -46,6 +47,7 @@ const getData = async () => {
     }
 };
 
+// Add data received form api to the page
 const addData = async () => {
     let data = await getData();
     let i = 1;
@@ -56,6 +58,7 @@ const addData = async () => {
     }
 };
 
+// Add map to the page
 const addMap = () => {
     const mapIframe = document.querySelector('#gmap_canvas');
     mapIframe.src = 'https://maps.google.com/maps?q=' + countryName + '&t=&z=13&ie=UTF8&iwloc=&output=embed';
