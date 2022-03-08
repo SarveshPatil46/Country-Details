@@ -22,6 +22,15 @@ searchBox.addEventListener('keyup', async (e) => {
         newLI.textContent = country.toUpperCase();
         countryList.append(newLI);
     }
+    const lis = countryList.getElementsByTagName('li');
+
+    for (li of lis) {
+        li.addEventListener('click', (e) => {
+            console.log(e.target.innerText);
+            window.location = 'page2.html'
+            localStorage.setItem('country', e.target.innerText);
+        });
+    };
 });
 
 const getCountries = async () => {

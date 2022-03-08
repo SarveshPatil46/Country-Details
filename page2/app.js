@@ -32,8 +32,6 @@ const getData = async () => {
             flag: flag,
             languages: languages,
             population: population,
-            // flagImg: flagImg,
-            // map: map,
         }
         const img = document.createElement('img');
         img.src = flagImg;
@@ -46,7 +44,7 @@ const getData = async () => {
     catch (e) {
         return e;
     }
-}
+};
 
 const addData = async () => {
     let data = await getData();
@@ -56,6 +54,12 @@ const addData = async () => {
         p.textContent += data[item];
         i++;
     }
-}
+};
+
+const addMap = () => {
+    const mapIframe = document.querySelector('#gmap_canvas');
+    mapIframe.src = 'https://maps.google.com/maps?q=' + countryName + '&t=&z=13&ie=UTF8&iwloc=&output=embed';
+};
 
 addData();
+addMap();
